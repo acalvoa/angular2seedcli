@@ -42,6 +42,7 @@ as2cli generate feature login -r login
 ```bash
 as2cli generate feature dashboard -c dashboard
 ```
+
 ### Service
 To generate a new service and inject into the app.
 
@@ -56,12 +57,19 @@ as2cli generate service rest
 
 ### Shared Component
 To generate a new shared feature component and subscribe to the shared module.
+
 #### Usage
 ```bash
 as2cli generate shared [name]
 ```
+#### Example
+```bash
+as2cli generate shared header
+```
 
 ### Pipe
+To generate a new service and inject into the app.
+
 ### Directive
 
 
