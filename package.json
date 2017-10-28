@@ -1,0 +1,25 @@
+{
+  "name": "AngularSeedCli",
+  "version": "1.0.0",
+  "description": "Angular seed 2 cli for project with folder structure",
+  "main": "index.js",
+  "dependencies": {
+    "bcrypt": "^1.0.2",
+    "capitalize": "^1.0.0",
+    "commander": "^2.11.0",
+    "shelljs": "^0.7.8"
+  },
+  "devDependencies": {},
+  "bin": {
+    "as2cli": "./index.js"
+  },
+  "keywords": [
+    "angular",
+    "seed",
+    "2",
+    "angular",
+    "cli"
+  ],
+  "author": "acalvoa",
+  "license": "MIT"
+}
