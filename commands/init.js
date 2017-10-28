@@ -63,6 +63,42 @@ module.exports = function(name){
 		    if(err) {
 		        return console.log(err);
 		    }
+		    /*MODIFICANDO EL MODULO*/
+			shell.exec('cat features/features.module.ts', {
+				silent: true
+			},function(code, stdout, stderr){
+				stdout = stdout.replace(/import { NgModule }.*\n/g, "import { NgModule } from '@angular/core';\nimport { HomeComponent } from './home/home.component';\nimport { IndexComponent } from './index/index.component';\n");
+				/*DECLARACIONES*/
+				var comp = stdout.substring(stdout.indexOf("declarations:"), stdout.length-1);
+				comp = comp .substring(comp.indexOf("[")+1,comp.indexOf("]"));
+				if(comp.trim() == ""){
+					comp = comp+"HomeComponent, IndexComponent";
+				}
+				else
+				{
+					comp = comp+", HomeComponent, IndexComponent";
+				}
+				comp = "declarations:["+comp+"]";
+				stdout = stdout.replace(/declarations:.*]/g, comp);
+
+				/*EXPORTS*/
+				var comp = stdout.substring(stdout.indexOf("exports:"), stdout.length-1);
+				comp = comp .substring(comp.indexOf("[")+1,comp.indexOf("]"));
+				if(comp.trim() == ""){
+					comp = comp+"HomeComponent, IndexComponent";
+				}
+				else
+				{
+					comp = comp+", HomeComponent, IndexComponent";
+				}
+				comp = "exports: ["+comp+"]";
+				stdout = stdout.replace(/exports:.*]/g, comp);
+				fs.writeFile("features/features.module.ts", stdout, function(err) {
+				    if(err) {
+				        return console.log(err);
+				    }
+				});
+			});
 		}); 
 		fs.writeFile("pipes/pipes.module.ts", modules('Pipes', false, true, false, false), function(err) {
 		    if(err) {
@@ -119,6 +155,7 @@ module.exports = function(name){
 		        return console.log(err);
 		    }
 		}); 
+
 		console.log("Instalando componentes");
 		shell.exec('npm install', {
 			silent: true

@@ -1,10 +1,10 @@
 {
   "name": "angularseedcli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Angular seed 2 cli for project with folder structure",
   "main": "index.js",
   "dependencies": {
-    "bcrypt": "^1.0.2",
+    "bcrypt": "^1.0.3",
     "capitalize": "^1.0.0",
     "commander": "^2.11.0",
     "shelljs": "^0.7.8"
