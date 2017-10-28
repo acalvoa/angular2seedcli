@@ -6,6 +6,7 @@ var service = require('./commands/service');
 var shared = require('./commands/shared');
 var pipe = require('./commands/pipe');
 var directive = require('./commands/directive');
+var classes = require('./commands/classes');
 
 program
 .version('0.1.0')
@@ -47,6 +48,9 @@ program
 		{
 			console.log("No se ha especificado el selector de la directiva.");
 		}
+	}
+	else if(type == 'class'){
+		classes(name);
 	}
 	else{
 		console.log("El tipo de generador es erroneo service|shared|component|pipe|directive");
