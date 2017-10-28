@@ -68,8 +68,24 @@ as2cli generate shared header
 ```
 
 ### Pipe
-To generate a new service and inject into the app.
+To generate a new pipe and subscribe to the pipes module. This command receive one option that specifies the pipe callname into the html document.
 
+#### Usage
+```bash
+as2cli generate pipe [name] -p [pipe callname]
+```
+#### Example
+```bash
+as2cli generate pipe clp -p CLP
+```
 ### Directive
+To generate a new directive and subscribe to the directives module. This command receive one option that specifies the directive selector name into the html document.
 
-
+#### Usage
+```bash
+as2cli generate directive [name] -d [selector]
+```
+#### Example
+```bash
+as2cli generate directive rutformater -d RutFormater
+```
