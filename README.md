@@ -3,6 +3,20 @@ Angular seed 2 Cli is a project to help any develop of angular app using the ang
 
 ## INSTALATION
 
-``
-- npm install angularseedcli -g
-``
+```bash
+npm install angularseedcli -g
+```
+## USAGE
+- For create a new project you can use the next command
+
+```bash
+as2cli init [nameproject]
+```
+The command clone the latest repository of angular 2 cli, and make the folder and modules structure
+
+### EXAMPLE
+```bash
+as2cli init testproject
+```
+
+
