@@ -89,3 +89,13 @@ as2cli generate directive [name] -d [selector]
 ```bash
 as2cli generate directive rutformater -d RutFormater
 ```
+### Class
+To generate a new class and add to classes folder. 
+
+#### Usage
+```bash
+as2cli generate class [name] 
+```
+#### Example
+```bash
+as2cli generate class client
