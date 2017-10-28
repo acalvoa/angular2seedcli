@@ -1,5 +1,5 @@
 {
-  "name": "AngularSeedCli",
+  "name": "angularseedcli",
   "version": "1.0.0",
   "description": "Angular seed 2 cli for project with folder structure",
   "main": "index.js",
@@ -21,5 +21,16 @@
     "cli"
   ],
   "author": "acalvoa",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acalvoa/angular2seedcli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/acalvoa/angular2seedcli/issues"
+  },
+  "homepage": "https://github.com/acalvoa/angular2seedcli#readme"
 }
