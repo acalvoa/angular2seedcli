@@ -3,7 +3,7 @@ module.exports = function getModule(){
 	return "import { NgModule } from '@angular/core';\n"+
 	"import { BrowserModule } from '@angular/platform-browser';\n"+
 	"import { APP_BASE_HREF } from '@angular/common';\n"+
-	"import { HttpModule } from '@angular/http';\n"+
+	"import { HttpClientModule } from '@angular/common/http';\n"+
 	"import { AppComponent } from './app.component';\n"+
 	"import { AppRoutingModule } from './app-routing.module';\n"+
 	"\n"+
@@ -15,7 +15,7 @@ module.exports = function getModule(){
 	"\n"+
 	"\n"+
 	"@NgModule({\n"+
-	"\timports: [BrowserModule, HttpModule, AppRoutingModule, SharedModule.forRoot(),\n"+
+	"\timports: [BrowserModule, HttpClientModule, AppRoutingModule, SharedModule.forRoot(),\n"+
 	"\tServicesModule, FeaturesModule, PipesModule, DirectivesModule],\n"+
 	"\tdeclarations: [AppComponent],\n"+
 	"\tproviders: [{\n"+
