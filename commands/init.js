@@ -34,13 +34,12 @@ module.exports = function(name){
 		shell.exec('cat shared/shared.module.ts', {
 			silent: true
 		},function(code, stdout, stderr){
-			stdout = stdout.replace(/import { ToolbarComponent }.*\n/g, '');
+			stdout = stdout.replace(/\nimport { ToolbarComponent }.*\n/g, '');
 			stdout = stdout.replace(/import { NavbarComponent }.*\n/g, '');
 			stdout = stdout.replace(/import { NameListService }.*\n/g, '');
-			stdout = stdout.replace("declarations: [ToolbarComponent, NavbarComponent],",'declarations: [],',"gi");
-			stdout = stdout.replace("declarations: [ToolbarComponent, NavbarComponent],",'declarations: [],',"gi");
-			stdout = stdout.replace("CommonModule, FormsModule, RouterModule]", "", "gi");
-			stdout = stdout.replace("exports: [ToolbarComponent, NavbarComponent,", "exports: [CommonModule, FormsModule, RouterModule],", "gi");
+			stdout = stdout.replace("declarations: [ToolbarComponent, NavbarComponent],", 'declarations: [],',"gi");
+			stdout = stdout.replace("\n    CommonModule, FormsModule, RouterModule]", "", "gi");
+			stdout = stdout.replace("exports: [ToolbarComponent, NavbarComponent,", "exports: [CommonModule, FormsModule, RouterModule]", "gi");
 			stdout = stdout.replace("providers: [NameListService]", "providers: []", "gi");
 			fs.writeFile("shared/shared.module.ts", stdout, function(err) {
 			    if(err) {
@@ -78,7 +77,7 @@ module.exports = function(name){
 				{
 					comp = comp+", HomeComponent, IndexComponent";
 				}
-				comp = "declarations:["+comp+"]";
+				comp = "declarations: ["+comp+"]";
 				stdout = stdout.replace(/declarations:.*]/g, comp);
 
 				/*EXPORTS*/
@@ -121,7 +120,7 @@ module.exports = function(name){
 			silent: true
 		},function(code, stdout, stderr){
 			stdout = stdout.replace(/import { RouterModule.*\n/g, "import { RouterModule } from '@angular/router';\nimport { FeaturesRoutes } from './features/features.routes';\n");
-			stdout = stdout.replace(/\*\//g, '*/\n\t\t...FeaturesRoutes\n');
+			stdout = stdout.replace(/\*\//g, '*/\n      ...FeaturesRoutes\n');
 			fs.writeFile("app-routing.module.ts", stdout, function(err) {
 			    if(err) {
 			        return console.log(err);
