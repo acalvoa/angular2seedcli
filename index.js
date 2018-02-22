@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 var program = require('commander');
 var init = require('./commands/init');
-var component = require('./commands/component');
+var feature = require('./commands/feature');
 var service = require('./commands/service');
 var shared = require('./commands/shared');
 var pipe = require('./commands/pipe');
@@ -22,8 +22,8 @@ program
 .option("-p, --pipecall [pipe]", "Especifica el metodo de llamada del pipe")
 .option("-d, --directive [selector]", "Especifica el selector que llama a la directiva")
 .action(function(type,name, options){
-	if(type == 'component'){
-		component(name, options.route, options.childroute);
+	if(type == 'feature'){
+		feature(name, options.route, options.childroute);
 	}
 	else if(type == 'service'){
 		service(name);
