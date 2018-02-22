@@ -7,7 +7,7 @@ var routers = require('../generators/router');
 var component = require('../generators/component');
 
 module.exports = function(name, route, child_route){
-	console.log("Creando Componente "+name);
+	console.log("Creando Feature "+name);
 	var counter = 0;
 	var ruta = "";
 	while(counter < 6){
@@ -30,7 +30,7 @@ module.exports = function(name, route, child_route){
 	}
 	console.log("Ingresando al directorio del proyecto");
 	shell.cd(ruta+"src/client/app");
-	console.log("Creando el componente");
+	console.log("Creando el Feature");
 	if(shell.mkdir('features/'+name).code == 0){
 		fs.writeFile('features/'+name+'/'+name+'.component.html', capitalize(name)+' Component works!', function(err) {
 		    if(err) {
@@ -58,7 +58,7 @@ module.exports = function(name, route, child_route){
 			{
 				comp = comp+", "+capitalize(name)+"Component";
 			}
-			comp = "declarations:["+comp+"]";
+			comp = "declarations: ["+comp+"]";
 			stdout = stdout.replace(/declarations:.*]/g, comp);
 
 			/*EXPORTS*/
@@ -121,9 +121,9 @@ module.exports = function(name, route, child_route){
 				});
 			});
 		}
-		console.log("Componente creado"); 
+		console.log("Feature creado"); 
 	}
 	else{
-		console.log("Ya se encuentra creado un componente con el mismo nombre, por favor intente con otro nombre");
+		console.log("Ya se encuentra creado un Feature con el mismo nombre, por favor intente con otro nombre");
 	}
 };
