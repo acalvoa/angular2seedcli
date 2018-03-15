@@ -15,7 +15,9 @@ as2cli init [nameproject] --fast --git [remote_repository]
 ```
 The command clone the latest repository of angular 2 cli, and make the folder and modules structure.
 If you specify the fast option, the cli not execute the npm install command to install the vendor dependencies.
-If you specify the git option like (--git) , the cli init a empty git repository with a branch as2cli;
+
+If you specify the git option like (--git) , the cli init a empty git repository with a branch as2cli.
+
 If you specify the git option with a remote repository like (--git remote_repository) , the cli init a repository with the master branch of the remote project, and a branch named as2cli with the angular project.
 
 ### Example
