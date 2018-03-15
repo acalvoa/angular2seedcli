@@ -6,16 +6,18 @@ var appmodules = require('../generators/appmodule');
 var routers = require('../generators/router');
 var component = require('../generators/component');
 
-module.exports = function(name){
-	console.log("Creando Proyecto Angular "+name);
+module.exports = function(name, fast){
+	console.log("Creating Angular Project "+name);
     if (!shell.which('git')) {
 	  shell.echo('Sorry, this script requires git');
 	  shell.exit(1);
 	}
-	if(shell.exec('git clone git@github.com:mgechev/angular-seed.git '+name).code == 0){
+	if(shell.exec('git clone https://github.com/mgechev/angular-seed.git '+name).code == 0){
 		shell.touch(name+'/.as2cli');
-		shell.exec('echo '+name+' > '+name+'/.as2cli')
-		console.log("Creando Estructura de Directorios");
+		shell.exec('echo '+name+' > '+name+'/.as2cli');
+		console.log('Removing base git project...');
+		shell.rm('-rf', '.git');
+		console.log("Creating folder structure...");
 		shell.cd(name);
 		shell.cd('src/client/app');
 		shell.mkdir('features');
@@ -30,7 +32,7 @@ module.exports = function(name){
 		shell.rm('-rf', 'shared/toolbar');
 		shell.mv('app.component.css', 'app.component.scss');
 		shell.mv('../css/main.css', '../css/main.scss');
-		console.log("Creando Estructura de Modulos");
+		console.log("Creating module structure...");
 		shell.exec('cat shared/shared.module.ts', {
 			silent: true
 		},function(code, stdout, stderr){
@@ -110,7 +112,7 @@ module.exports = function(name){
 		    }
 		}); 
 		//RUTAS
-		console.log("Generando Enrutadores");
+		console.log("Generating Router Paths...");
 		fs.writeFile("features/features.routes.ts", routers(), function(err) {
 		    if(err) {
 		        return console.log(err);
@@ -128,7 +130,7 @@ module.exports = function(name){
 			}); 
 		});
 		/*GENERADO COMPONENT*/
-		console.log("Generando Componentes base");
+		console.log("Generating base components");
 		fs.writeFile("app.component.html", '<router-outlet></router-outlet>', function(err) {
 		    if(err) {
 		        return console.log(err);
@@ -154,12 +156,13 @@ module.exports = function(name){
 		        return console.log(err);
 		    }
 		}); 
-
-		console.log("Instalando componentes");
-		shell.exec('npm install', {
-			silent: true
-		},function(code, stdout, stderr){
-			console.log("Componentes instalados");
-		});
+		if(!fast){
+			console.log("Installing vendor components  (if you need omit this step run as2cli with --fast option)");
+			shell.exec('npm install', {
+				silent: true
+			},function(code, stdout, stderr){
+				console.log("Components installed.");
+			});
+		}
 	}
 }
