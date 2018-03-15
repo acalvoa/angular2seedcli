@@ -85,7 +85,7 @@ module.exports = async function(name, route, child_route){
 			shell.exec('cat features/features.routes.ts', {
 				silent: true
 			},function(code, stdout, stderr){
-	        	stdout = stdout.replace(/;\nexport const FeaturesRoutes/g, ";\nimport { "+capitalize(name)+"Component } from './"+name+"/"+name+".component';\nexport const FeaturesRoutes");
+	        	stdout = "import { "+capitalize(name)+"Component } from './"+name+"/"+name+".component';\n"+stdout;
 				stdout = stdout.replace(/}\n];/g, "},\n    {\n        path: '"+route+"',\n        component: "+capitalize(name)+"Component\n    }\n];");
 				fs.writeFile("features/features.routes.ts", stdout, function(err) {
 				    if(err) {

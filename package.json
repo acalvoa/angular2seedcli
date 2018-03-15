@@ -1,6 +1,6 @@
 {
   "name": "angularseedcli",
-  "version": "1.1.0",
+  "version": "1.2.1",
   "description": "Angular seed 2 cli for project with folder structure",
   "main": "index.js",
   "dependencies": {
