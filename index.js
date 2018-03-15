@@ -9,18 +9,19 @@ var directive = require('./commands/directive');
 var classes = require('./commands/classes');
 
 program
-.version('0.1.0')
+.version('0.2.0')
 .command('init <name>')
-.action(function(name){
-	init(name);
+.option("-f, --fast", "Omit the install of vendor components with npm install.")
+.action(function(name, options){
+	init(name, options.fast);
 });
 
 program
 .command('generate <type> <name>')
-.option("-r, --route [ruta]", "Define si el componente sera enrutado")
-.option("-c, --childroute [ruta]", "Define si el componente sera enrutado como child del componente index")
-.option("-p, --pipecall [pipe]", "Especifica el metodo de llamada del pipe")
-.option("-d, --directive [selector]", "Especifica el selector que llama a la directiva")
+.option("-r, --route [ruta]", "Define the feature route.")
+.option("-c, --childroute [ruta]", "Define the route into Index component like a child route.")
+.option("-p, --pipecall [pipe]", "Define the pipe callname for html templates.")
+.option("-d, --directive [selector]", "Define the selector name to call directive.")
 .action(function(type,name, options){
 	if(type == 'feature'){
 		feature(name, options.route, options.childroute);
