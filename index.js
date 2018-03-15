@@ -7,13 +7,20 @@ var shared = require('./commands/shared');
 var pipe = require('./commands/pipe');
 var directive = require('./commands/directive');
 var classes = require('./commands/classes');
+var isGitUrl = require('is-git-url');
 
 program
 .version('0.2.0')
 .command('init <name>')
 .option("-f, --fast", "Omit the install of vendor components with npm install.")
+.option("-g, --git [path]", "Add a git repository to project and stash with a new branch.")
 .action(function(name, options){
-	init(name, options.fast);
+	if(typeof options.git == 'string' && !isGitUrl(options.git)){
+		console.log("The git url must be a valid git repository.");
+	}
+	else{
+		init(name, options.fast, options.git);
+	}
 });
 
 program

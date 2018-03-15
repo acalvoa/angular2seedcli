@@ -6,7 +6,7 @@ var appmodules = require('../generators/appmodule');
 var routers = require('../generators/router');
 var service = require('../generators/service');
 
-module.exports = function(name){
+module.exports = async function(name){
 	console.log("Creating Service "+name);
 	var counter = 0;
 	var ruta = "";

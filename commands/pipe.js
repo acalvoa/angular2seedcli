@@ -6,7 +6,7 @@ var appmodules = require('../generators/appmodule');
 var routers = require('../generators/router');
 var pipe = require('../generators/pipe');
 
-module.exports = function(name, pipename){
+module.exports = async function(name, pipename){
 	console.log("Creating Pipe "+name);
 	var counter = 0;
 	var ruta = "";

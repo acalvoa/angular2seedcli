@@ -6,7 +6,7 @@ var appmodules = require('../generators/appmodule');
 var routers = require('../generators/router');
 var directive = require('../generators/directive');
 
-module.exports = function(name, directivename){
+module.exports = async function(name, directivename){
 	console.log("Creating Directive "+name);
 	var counter = 0;
 	var ruta = "";

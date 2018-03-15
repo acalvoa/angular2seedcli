@@ -4,8 +4,10 @@
   "description": "Angular seed 2 cli for project with folder structure",
   "main": "index.js",
   "dependencies": {
+    "await-fs": "^1.0.0",
     "capitalize": "^1.0.0",
     "commander": "^2.11.0",
+    "is-git-url": "1.0.0",
     "shelljs": "^0.7.8"
   },
   "devDependencies": {},

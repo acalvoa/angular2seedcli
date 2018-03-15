@@ -6,7 +6,7 @@ var appmodules = require('../generators/appmodule');
 var routers = require('../generators/router');
 var component = require('../generators/component');
 
-module.exports = function(name, route, child_route){
+module.exports = async function(name, route, child_route){
 	console.log("Creating Feature "+name);
 	var counter = 0;
 	var ruta = "";
