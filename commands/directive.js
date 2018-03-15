@@ -7,7 +7,7 @@ var routers = require('../generators/router');
 var directive = require('../generators/directive');
 
 module.exports = function(name, directivename){
-	console.log("Creando Directiva "+name);
+	console.log("Creating Directive "+name);
 	var counter = 0;
 	var ruta = "";
 	while(counter < 6){
@@ -25,12 +25,12 @@ module.exports = function(name, directivename){
 		}
 	}
 	if(counter == 6){
-		console.log("El comando debe ejecutarse dentro de la ruta de un proyecto Angular Seed 2");
+		console.log("The command must be excecuted in the Angular Seed 2 project route.");
 		shell.exit();
 	}
-	console.log("Ingresando al directorio del proyecto");
+	console.log("Entering to the project directory.");
 	shell.cd(ruta+"src/client/app");
-	console.log("Creando el componente");
+	console.log("Creating directive files");
 	if(shell.mkdir('directives/'+name).code == 0){
 		fs.writeFile('directives/'+name+'/'+name+'.directive.ts', directive(name, directivename), function(err) {
 		    if(err) {
@@ -77,6 +77,6 @@ module.exports = function(name, directivename){
 		console.log("Directiva Creada"); 
 	}
 	else{
-		console.log("Ya se encuentra creado una directiva con el mismo nombre, por favor intente con otro nombre");
+		console.log("It already exists a directive with the same name, please try with other directive name");
 	}
 };
