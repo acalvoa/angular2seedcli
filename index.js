@@ -45,7 +45,7 @@ program
 		}
 		else
 		{
-			console.log("No se ha especificado el callname del pipe.");
+			console.log("Callname pipe is not specified.");
 		}
 	}
 	else if(type == 'directive'){
@@ -54,14 +54,14 @@ program
 		}
 		else
 		{
-			console.log("No se ha especificado el selector de la directiva.");
+			console.log("Directive selector is not specified.");
 		}
 	}
 	else if(type == 'class'){
 		classes(name);
 	}
 	else{
-		console.log("El tipo de generador es erroneo service|shared|component|pipe|directive");
+		console.log("The generator type is incorrect, use service|shared|feature|pipe|directive");
 	}
 	
 });
