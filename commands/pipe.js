@@ -7,7 +7,7 @@ var routers = require('../generators/router');
 var pipe = require('../generators/pipe');
 
 module.exports = function(name, pipename){
-	console.log("Creando Pipe "+name);
+	console.log("Creating Pipe "+name);
 	var counter = 0;
 	var ruta = "";
 	while(counter < 6){
@@ -25,12 +25,12 @@ module.exports = function(name, pipename){
 		}
 	}
 	if(counter == 6){
-		console.log("El comando debe ejecutarse dentro de la ruta de un proyecto Angular Seed 2");
+		console.log("The command must be excecuted in the Angular Seed 2 project route.");
 		shell.exit();
 	}
-	console.log("Ingresando al directorio del proyecto");
+	console.log("Entering to the project directory.");
 	shell.cd(ruta+"src/client/app");
-	console.log("Creando el Pipe");
+	console.log("Creating pipe files");
 	if(shell.mkdir('pipes/'+name).code == 0){
 		fs.writeFile('pipes/'+name+'/'+name+'.pipe.ts', pipe(name, pipename), function(err) {
 		    if(err) {
@@ -74,9 +74,9 @@ module.exports = function(name, pipename){
 			    }
 			});
 		});
-		console.log("Pipe Creado"); 
+		console.log("Pipe Created"); 
 	}
 	else{
-		console.log("Ya se encuentra creado un pipe con el mismo nombre, por favor intente con otro nombre");
+		console.log("It already exists a pipe with the same name, please try with other pipe name");
 	}
 };

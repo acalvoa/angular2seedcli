@@ -7,20 +7,28 @@ var shared = require('./commands/shared');
 var pipe = require('./commands/pipe');
 var directive = require('./commands/directive');
 var classes = require('./commands/classes');
+var isGitUrl = require('is-git-url');
 
 program
-.version('0.1.0')
+.version('0.2.0')
 .command('init <name>')
-.action(function(name){
-	init(name);
+.option("-f, --fast", "Omit the install of vendor components with npm install.")
+.option("-g, --git [path]", "Add a git repository to project and stash with a new branch.")
+.action(function(name, options){
+	if(typeof options.git == 'string' && !isGitUrl(options.git)){
+		console.log("The git url must be a valid git repository.");
+	}
+	else{
+		init(name, options.fast, options.git);
+	}
 });
 
 program
 .command('generate <type> <name>')
-.option("-r, --route [ruta]", "Define si el componente sera enrutado")
-.option("-c, --childroute [ruta]", "Define si el componente sera enrutado como child del componente index")
-.option("-p, --pipecall [pipe]", "Especifica el metodo de llamada del pipe")
-.option("-d, --directive [selector]", "Especifica el selector que llama a la directiva")
+.option("-r, --route [ruta]", "Define the feature route.")
+.option("-c, --childroute [ruta]", "Define the route into Index component like a child route.")
+.option("-p, --pipecall [pipe]", "Define the pipe callname for html templates.")
+.option("-d, --directive [selector]", "Define the selector name to call directive.")
 .action(function(type,name, options){
 	if(type == 'feature'){
 		feature(name, options.route, options.childroute);
@@ -37,7 +45,7 @@ program
 		}
 		else
 		{
-			console.log("No se ha especificado el callname del pipe.");
+			console.log("Callname pipe is not specified.");
 		}
 	}
 	else if(type == 'directive'){
@@ -46,14 +54,14 @@ program
 		}
 		else
 		{
-			console.log("No se ha especificado el selector de la directiva.");
+			console.log("Directive selector is not specified.");
 		}
 	}
 	else if(type == 'class'){
 		classes(name);
 	}
 	else{
-		console.log("El tipo de generador es erroneo service|shared|component|pipe|directive");
+		console.log("The generator type is incorrect, use service|shared|feature|pipe|directive");
 	}
 	
 });

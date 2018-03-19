@@ -11,9 +11,14 @@ npm install angularseedcli -g
 - For create a new project you can use the next command
 
 ```bash
-as2cli init [nameproject]
+as2cli init [nameproject] --fast --git [remote_repository]
 ```
-The command clone the latest repository of angular 2 cli, and make the folder and modules structure
+The command clone the latest repository of angular 2 cli, and make the folder and modules structure.
+If you specify the fast option, the cli not execute the npm install command to install the vendor dependencies.
+
+If you specify the git option like (--git) , the cli init a empty git repository with a branch as2cli.
+
+If you specify the git option with a remote repository like (--git remote_repository) , the cli init a repository with the master branch of the remote project, and a branch named as2cli with the angular project.
 
 ### Example
 ```bash
@@ -38,7 +43,7 @@ as2cli generate feature test
 ```bash
 as2cli generate feature login -r login
 ```
-- Component with route
+- Component with child route
 ```bash
 as2cli generate feature dashboard -c dashboard
 ```

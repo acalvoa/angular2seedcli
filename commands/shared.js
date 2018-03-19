@@ -7,7 +7,7 @@ var routers = require('../generators/router');
 var component = require('../generators/component');
 
 module.exports = function(name, route, child_route){
-	console.log("Creando Componente "+name);
+	console.log("Creating Shared Component "+name);
 	var counter = 0;
 	var ruta = "";
 	while(counter < 6){
@@ -25,12 +25,12 @@ module.exports = function(name, route, child_route){
 		}
 	}
 	if(counter == 6){
-		console.log("El comando debe ejecutarse dentro de la ruta de un proyecto Angular Seed 2");
+		console.log("The command must be excecuted in the Angular Seed 2 project route.");
 		shell.exit();
 	}
-	console.log("Ingresando al directorio del proyecto");
+	console.log("Entering to the project directory.");
 	shell.cd(ruta+"src/client/app");
-	console.log("Creando el Componente Shared");
+	console.log("Creating shared component files");
 	if(shell.mkdir('shared/'+name).code == 0){
 		fs.writeFile('shared/'+name+'/'+name+'.component.html', capitalize(name)+' Shared Component works!', function(err) {
 		    if(err) {
@@ -80,9 +80,9 @@ module.exports = function(name, route, child_route){
 			    }
 			});
 		});
-		console.log("Componente Shared Creado"); 
+		console.log("Shared Component Created"); 
 	}
 	else{
-		console.log("Ya se encuentra creado un componente con el mismo nombre, por favor intente con otro nombre");
+		console.log("It already exists a shared component with the same name, please try with other shared component name");
 	}
 };

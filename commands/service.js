@@ -7,7 +7,7 @@ var routers = require('../generators/router');
 var service = require('../generators/service');
 
 module.exports = function(name){
-	console.log("Creando Servicio "+name);
+	console.log("Creating Service "+name);
 	var counter = 0;
 	var ruta = "";
 	while(counter < 6){
@@ -25,12 +25,12 @@ module.exports = function(name){
 		}
 	}
 	if(counter == 6){
-		console.log("El comando debe ejecutarse dentro de la ruta de un proyecto Angular Seed 2");
+		console.log("The command must be excecuted in the Angular Seed 2 project route.");
 		shell.exit();
 	}
-	console.log("Ingresando al directorio del proyecto");
+	console.log("Entering to the project directory.");
 	shell.cd(ruta+"src/client/app");
-	console.log("Creando el Service");
+	console.log("Creating service files");
 	if(shell.mkdir('services/'+name).code == 0){
 		fs.writeFile('services/'+name+'/'+name+'.service.ts', service(name), function(err) {
 		    if(err) {
@@ -61,9 +61,9 @@ module.exports = function(name){
 			    }
 			});
 		});
-		console.log("Service Creado"); 
+		console.log("Service Created"); 
 	}
 	else{
-		console.log("Ya se encuentra creado un componente con el mismo nombre, por favor intente con otro nombre");
+		console.log("It already exists a service with the same name, please try with other service name");
 	}
 };
