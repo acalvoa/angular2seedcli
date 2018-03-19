@@ -6,7 +6,7 @@ var appmodules = require('../generators/appmodule');
 var routers = require('../generators/router');
 var classes = require('../generators/class');
 
-module.exports = async function(name, route, child_route){
+module.exports = function(name, route, child_route){
 	console.log("Creating Class "+name);
 	var counter = 0;
 	var ruta = "";

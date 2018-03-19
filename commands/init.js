@@ -6,7 +6,7 @@ var appmodules = require('../generators/appmodule');
 var routers = require('../generators/router');
 var component = require('../generators/component');
 var flags = 0;
-module.exports = async function(name, fast, git){
+module.exports = function(name, fast, git){
 	console.log("Creating Angular Project "+name);
     if (!shell.which('git')) {
 	  shell.echo('Sorry, this script requires git');
